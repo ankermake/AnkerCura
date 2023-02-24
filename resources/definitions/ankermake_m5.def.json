@@ -52,9 +52,9 @@
         "cool_min_layer_time": { "value": 6 },
         "cool_min_speed": { "value": 30 },
         "gantry_height": { "value": 25 },
-        "hole_xy_offset": { "value": 0.2 },
+        "hole_xy_offset": { "value": 0.1 },
         "infill_pattern": { "value": "'lines' if infill_sparse_density >= 25 else 'grid'" },
-        "infill_sparse_density": { "value": 25 },
+        "infill_sparse_density": { "value": 10 },
         "machine_depth": { "default_value": 235 },
         "machine_heated_bed": { "default_value": true },
         "machine_height": { "default_value": 250 },
@@ -65,18 +65,18 @@
         "material_bed_temperature_layer_0": { "maximum_value_warning": "110" },
         "material_diameter": { "default_value": 1.75 },
         "material_final_print_temperature": { "value": "material_print_temperature" },
-        "material_flow_layer_0": { "value": 115 },
+        "material_flow_layer_0": { "value": 110 },
         "material_initial_print_temperature": { "value": "material_print_temperature" },
         "material_print_temperature": { "maximum_value_warning": "260" },
         "material_print_temperature_layer_0":
         {
             "maximum_value_warning": "270",
-            "value": "material_print_temperature + 5"
+            "value":230
         },
         "minimum_interface_area": { "value": 10 },
-        "minimum_support_area": { "value": 2 },
-        "retraction_amount": { "default_value": 1.5 },
-        "retraction_combing": { "value": "'off' if retraction_hop_enabled else 'infill'" },
+        "minimum_support_area": { "value": 5 },
+        "retraction_amount": { "default_value": 3 },
+        "retraction_combing": { "value": "'off' if retraction_hop_enabled else 'noskin'" },
         "retraction_hop": { "value": 0.2 },
         "retraction_speed": { "default_value": 60 },
         "skin_material_flow": { "value": 97 },
@@ -89,7 +89,11 @@
             "maximum_value_warning": 255,
             "value": 250.0
         },
-        "speed_support": { "maximum_value_warning": 255 },
+        "speed_support":
+        {
+            "maximum_value_warning": 255 ,
+            "value":150.0
+        },
         "speed_support_bottom": { "maximum_value_warning": 255 },
         "speed_support_infill": { "maximum_value_warning": 255 },
         "speed_support_interface": { "maximum_value_warning": 255 },
@@ -108,19 +112,33 @@
         },
         "support_angle": { "value": "math.floor(math.degrees(math.atan(line_width / 2.0 /layer_height)))" },
         "support_brim_width": { "value": 4.0 },
-        "support_infill_rate": { "value": "0 if support_enable and support_structure == 'tree' else 20" },
+        "support_infill_rate": { "value": "0 if support_enable and support_structure == 'tree' else 30" },
         "support_interface_density": { "value": 33.333 },
-        "support_interface_enable": { "value": true },
+        "support_interface_enable": { "value": false },
         "support_interface_pattern": { "value": "'grid'" },
         "support_interface_skip_height": { "value": 0.2 },
-        "support_roof_enable": { "value": true },
+        "support_roof_enable": { "value": false },
+        "support_bottom_enable":{ "value": false },
         "support_xy_distance": { "value": "wall_line_width_0 * 2" },
+        "support_offset":{"value":2.0},
         "support_xy_distance_overhang": { "value": "wall_line_width_0" },
         "support_xy_overrides_z": { "value": "'xy_overrides_z'" },
-        "support_z_distance": { "value": "layer_height * 2" },
+        "support_z_distance": { "value": 0.1},
+        "support_top_distance":{"value":0.2},
+        "support_bottom_distance":{"value":0.4},
+
         "top_bottom_thickness": { "value": "layer_height * 4" },
-        "wall_overhang_angle": { "value": 55 },
+        "wall_overhang_angle": { "value": 60 },
         "wall_overhang_speed_factor": { "value": 55 },
-        "zig_zaggify_infill": { "value": "infill_pattern == 'cross' or infill_pattern == 'cross_3d' or infill_pattern == 'lines'" }
+        "zig_zaggify_infill": { "value": "infill_pattern == 'cross' or infill_pattern == 'cross_3d' or infill_pattern == 'lines' or infill_pattern == 'grid'"},
+        "wall_line_width_0":{"value":0.44},
+        "wall_thickness":{"value":1.24},
+        "wall_line_count":{"value":3},
+        "retraction_extrusion_window":{"value":0.1},
+        "bridge_settings_enabled":{"value":true},
+        "bridge_skin_speed":{"value":50},
+        "layer_height_0":{"value":0.14},
+        "travel_retract_before_outer_wall":{"value":true},
+        "fill_outline_gaps":{"value":true}
     }
 }
